@@ -1,23 +1,30 @@
 package com.example.calculatorfx;
 
+import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+
+import static javafx.scene.input.MouseEvent.MOUSE_CLICKED;
 
 public class Vista extends Parent {
     GridPane grid;
     Label pantalla;
     VBox box;
     Button n1,n2,n3,n4,n5,n6,n7,n8,n9,n0,mas,menos,multiplicar,dividir,reset,botonPunto,igual;
+    Controller contr= new Controller(pantalla);
 
     public Vista() {
 
         initcomponents();
+        funcionalidad();
     }
 
     public void initcomponents() {
@@ -92,6 +99,18 @@ public class Vista extends Parent {
         igual.setPrefSize(80, 80);
 
 
+    }
+
+    public void funcionalidad(){
+       mas.addEventHandler(MOUSE_CLICKED,contr.sumar);
+       EventHandler<MouseEvent> numero1 = new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent e) {
+                pantalla.setText("1");
+            }
+        };
+
+       n1.addEventHandler(MOUSE_CLICKED,numero1);
     }
 
 }
