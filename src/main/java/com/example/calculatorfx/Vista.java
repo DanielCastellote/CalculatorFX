@@ -116,6 +116,8 @@ public class Vista extends Parent {
         dividir.setOnAction(e->contr.manejarBotonOperacion(e));
         igual.setOnAction(e->contr.manejarBotonResultado(e));
 
+        reset.setOnAction(e->contr.limpiar(e));
+
 
     }
 

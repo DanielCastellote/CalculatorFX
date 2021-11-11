@@ -44,4 +44,8 @@ public class Controller {
         pantalla.setText(""+md.getResultado());
 
     }
+
+    public void limpiar(ActionEvent e) {
+        pantalla.setText("");
+    }
 }
