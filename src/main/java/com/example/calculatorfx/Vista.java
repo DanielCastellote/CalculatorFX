@@ -19,17 +19,19 @@ public class Vista extends Parent {
     Label pantalla;
     VBox box;
     Button n1,n2,n3,n4,n5,n6,n7,n8,n9,n0,mas,menos,multiplicar,dividir,reset,botonPunto,igual;
-    Controller contr= new Controller(pantalla);
+    Controller contr;
 
     public Vista() {
 
         initcomponents();
-        funcionalidad();
+        //añadirOperaciones();
     }
 
     public void initcomponents() {
+
         grid = new GridPane();
-        pantalla = new Label("0");
+        pantalla = new Label();
+        contr= new Controller(pantalla);
         box = new VBox(pantalla);
         n1 = new Button("1");
         n2 = new Button("2");
@@ -98,19 +100,26 @@ public class Vista extends Parent {
         botonPunto.setPrefSize(40,40);
         igual.setPrefSize(80, 80);
 
+        n1.setOnAction(e->contr.manejarBotonNumerico(e));
+        n2.setOnAction(e->contr.manejarBotonNumerico(e));
+        n3.setOnAction(e->contr.manejarBotonNumerico(e));
+        n4.setOnAction(e->contr.manejarBotonNumerico(e));
+        n5.setOnAction(e->contr.manejarBotonNumerico(e));
+        n6.setOnAction(e->contr.manejarBotonNumerico(e));
+        n7.setOnAction(e->contr.manejarBotonNumerico(e));
+        n8.setOnAction(e->contr.manejarBotonNumerico(e));
+        n9.setOnAction(e->contr.manejarBotonNumerico(e));
+        n0.setOnAction(e->contr.manejarBotonNumerico(e));
+        mas.setOnAction(e->contr.manejarBotonOperacion(e));
+        menos.setOnAction(e->contr.manejarBotonOperacion(e));
+        multiplicar.setOnAction(e->contr.manejarBotonOperacion(e));
+        dividir.setOnAction(e->contr.manejarBotonOperacion(e));
+        igual.setOnAction(e->contr.manejarBotonResultado(e));
+
 
     }
 
-    public void funcionalidad(){
-       mas.addEventHandler(MOUSE_CLICKED,contr.sumar);
-       EventHandler<MouseEvent> numero1 = new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent e) {
-                pantalla.setText("1");
-            }
-        };
 
-       n1.addEventHandler(MOUSE_CLICKED,numero1);
-    }
+
 
 }
